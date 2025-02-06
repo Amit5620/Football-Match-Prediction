@@ -2,6 +2,5 @@ Flask
 scikit-learn
 pandas
 numpy
-sqlite3
 pickle
 gunicorn
