@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Match Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" class="logo">
+            <h1>Football Match Predictor</h1>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <a href="{{ url_for('prediction') }}" class="btn">Predict Football Match</a>
+        <br><br><br>
+        <h2>Welcome to the Football Match Prediction Website!</h2>
+        <p>Get predictions for football match results using a trained machine learning model.</p>
+        <br><br>
+        <!-- Two-column layout -->
+        <div class="two-columns">
+            <!-- Left Column: 4 images related to football -->
+            <div class="left-column">
+                <img src="{{ url_for('static', filename='image1.jpg') }}" alt="Football Match 1">
+                <img src="{{ url_for('static', filename='image2.jpg') }}" alt="Football Match 2">
+                <img src="{{ url_for('static', filename='image3.jpg') }}" alt="Football Match 3">
+                <img src="{{ url_for('static', filename='image4.jpg') }}" alt="Football Match 4">
+            </div>
+
+            <!-- Right Column: Information related to football matches -->
+            <div class="right-column">
+                <h3>Latest Football Updates</h3>
+                <p>Catch up with the latest football news, scores, and team performances.</p>
+            
+                <h3>Match Statistics</h3>
+                <p>Explore various football match statistics including goals, shots, and more.</p>
+            
+                <h3>Upcoming Matches</h3>
+                <p>Check out the schedule of upcoming football matches for this season.</p>
+            
+                <h3>Player Highlights</h3>
+                <p>Get detailed profiles of top football players, including their stats and performance.</p>
+            
+                <h3>Football Tactics & Strategies</h3>
+                <p>Learn about different football tactics used by top teams, including attacking formations, defensive strategies, and pressing techniques. Stay updated on how teams adapt their play styles to outsmart their opponents.</p>
+            
+                <h3>Top Team Performances</h3>
+                <p>Discover the best performing teams in recent matches, leagues, and tournaments. Track the top teams' win rates, goal statistics, and overall league standings.</p>
+            
+                <h3>Player of the Match</h3>
+                <p>Find out who earned the title of 'Player of the Match' in the latest football games. Get insights into their performance, goals, assists, and key moments that made them stand out on the field.</p>
+            
+                <h3>Match Highlights Videos</h3>
+                <p>Watch the most exciting match highlights, including goals, assists, tackles, and key events. Relive the best moments from the latest football games.</p>
+            
+                <h3>Football Trivia</h3>
+                <p>Challenge your knowledge of football history! Explore trivia about legendary players, iconic moments, and unforgettable matches from the past.</p>
+            
+                <h3>Fan Reactions & Social Media Buzz</h3>
+                <p>Stay connected with the football community! Check out fan reactions, social media trends, and memes related to the latest football news and matches.</p>
+            
+                <h3>Fantasy Football Tips</h3>
+                <p>Get tips and strategies for building your fantasy football team. Learn how to maximize your fantasy points by picking the right players and making smart decisions each week.</p>
+            
+                <h3>Football Gear & Merchandise</h3>
+                <p>Shop the latest football gear and merchandise, from jerseys to accessories. Show your support for your favorite team with exclusive products.</p>
+            
+                <h3>Referee Decisions & Controversies</h3>
+                <p>Stay updated on the latest referee decisions, red card incidents, and controversial moments in football. Understand the impact of these decisions on the outcome of matches.</p>
+            </div>            
+
+        </div>
+    </div>
+</body>
+</html>

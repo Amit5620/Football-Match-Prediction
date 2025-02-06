@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Match Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" class="logo">
+            <h1>Football Match Predictor</h1>
+        </div>
+    </header>
+
+    <br><br>
+
+    <div class="form-container">
+        <h2>Football Match Prediction</h2>
+        <form action="{{ url_for('prediction') }}" method="POST">
+            <!-- Dropdowns for Division, Country, League -->
+            <label for="Div">Division:</label>
+            <select name="Div" id="Div" required>
+                <option value="E1">E1</option>
+                <option value="E3">E3</option>
+                <option value="E2">E2</option>
+                <option value="E0">E0</option>
+                <option value="SP1">SP1</option>
+                <option value="I1">I1</option>
+                <option value="EC">EC</option>
+                <option value="F1">F1</option>
+                <option value="D1">D1</option>
+                <option value="SC0">SC0</option>
+                <option value="D2">D2</option>
+                <option value="SP2">SP2</option>
+                <option value="I2">I2</option>
+                <option value="T1">T1</option>
+                <option value="P1">P1</option>
+                <option value="N1">N1</option>
+                <option value="F2">F2</option>
+                <option value="SC1">SC1</option>
+                <option value="SC2">SC2</option>
+                <option value="SC3">SC3</option>
+                <option value="B1">B1</option>
+                <option value="G1">G1</option>
+            </select>
+
+            <label for="Country">Country:</label>
+            <select name="Country" id="Country" required>
+                <option value="Belgium">Belgium</option>
+                <option value="England">England</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Greece">Greece</option>
+                <option value="Italy">Italy</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Scotland">Scotland</option>
+                <option value="Spain">Spain</option>
+                <option value="Turkey">Turkey</option>
+            </select>
+
+            <label for="League">League:</label>
+            <select name="League" id="League" required>
+                <option value="Bundesliga 1">Bundesliga 1</option>
+                <option value="Bundesliga 2">Bundesliga 2</option>
+                <option value="Championship">Championship</option>
+                <option value="Conference">Conference</option>
+                <option value="Division 1">Division 1</option>
+                <option value="Division 2">Division 2</option>
+                <option value="Division 3">Division 3</option>
+                <option value="Eredivisie">Eredivisie</option>
+                <option value="Ethniki Katigoria">Ethniki Katigoria</option>
+                <option value="Futbol Ligi 1">Futbol Ligi 1</option>
+                <option value="Jupiler League">Jupiler League</option>
+                <option value="La Liga Primera Division">La Liga Primera Division</option>
+                <option value="La Liga Segunda Division">La Liga Segunda Division</option>
+                <option value="Le Championnat">Le Championnat</option>
+                <option value="League 1">League 1</option>
+                <option value="League 2">League 2</option>
+                <option value="Liga I">Liga I</option>
+                <option value="Premier League">Premier League</option>
+                <option value="Serie A">Serie A</option>
+                <option value="Serie B">Serie B</option>
+            </select>
+
+            <!-- Integer Inputs -->
+            <label for="Season_Start">Season Start:</label>
+            <input type="number" name="Season_Start" id="Season_Start" placeholder="2020" required>
+
+            <label for="Season_End">Season End:</label>
+            <input type="number" name="Season_End" id="Season_End" placeholder="2021" required>
+
+            <label for="Year">Match Year:</label>
+            <input type="number" name="Year" id="Year" placeholder="2021" required>
+
+            <label for="Month">Match Month:</label>
+            <input type="number" name="Month" id="Month" placeholder="5 ( for May ) " required>
+
+            <label for="Day">Match Day:</label>
+            <input type="number" name="Day" id="Day" placeholder="30" required>
+
+            <!-- Two-column layout for match stats -->
+            <div class="match-stats">
+                <div class="column">
+                    <label for="HomeTeam">Home Team:</label>
+                    <select name="HomeTeam" id="HomeTeam" required>
+                        <option value="AFC Wimbledon">AFC Wimbledon</option>
+                        <option value="Aberdeen">Aberdeen</option>
+                        <option value="Accrington">Accrington</option>
+                        <option value="Adelaide United">Adelaide United</option>
+                        <option value="Alanyaspor">Alanyaspor</option>
+                        <option value="Alaves">Alaves</option>
+                        <option value="Albion Rvs">Albion Rvs</option>
+                        <option value="Alcorcon">Alcorcon</option>
+                        <option value="Alfreton Town">Alfreton Town</option>
+                        <option value="Almeria">Almeria</option>
+                        <option value="Angers">Angers</option>
+                        <option value="Akhisar Belediyespor">Akhisar Belediyespor</option>
+                        <option value="Aldershot">Aldershot</option>
+                        <option value="Amiens">Amiens</option>
+                        <option value="Anderlecht">Anderlecht</option>
+                        <option value="Ankaragucu">Ankaragucu</option>
+                        <option value="Annan Athletic">Annan Athletic</option>
+                        <option value="Arbroath">Arbroath</option>
+                        <option value="Aris">Aris</option>
+                        <option value="Arsenal">Arsenal</option>
+                        <option value="Aston Villa">Aston Villa</option>
+                        <option value="Ath Bilbao">Ath Bilbao</option>
+                        <option value="Ath Madrid">Ath Madrid</option>
+                        <option value="Atalanta">Atalanta</option>
+                        <option value="Atromitos">Atromitos</option>
+                        <option value="Augsburg">Augsburg</option>
+                        <option value="Avellino">Avellino</option>
+                        <option value="Ayr">Ayr</option>
+                        <option value="Babelsberg">Babelsberg</option>
+                        <option value="Barcelona">Barcelona</option>
+                        <option value="Barcelona B">Barcelona B</option>
+                        <option value="Barnet">Barnet</option>
+                        <option value="Barnsley">Barnsley</option>
+                        <option value="Bastia">Bastia</option>
+                        <option value="Bayern Munich">Bayern Munich</option>
+                        <option value="Belenenses">Belenenses</option>
+                        <option value="Benfica">Benfica</option>
+                        <option value="Berea">Berea</option>
+                        <option value="Bielefeld">Bielefeld</option>
+                        <option value="Birmingham">Birmingham</option>
+                        <option value="Blackburn">Blackburn</option>
+                        <option value="Blackpool">Blackpool</option>
+                        <option value="Bochum">Bochum</option>
+                        <option value="Boavista">Boavista</option>
+                        <option value="Bologna">Bologna</option>
+                        <option value="Bolton">Bolton</option>
+                        <option value="Boston">Boston</option>
+                        <option value="Bournemouth">Bournemouth</option>
+                        <option value="Brescia">Brescia</option>
+                        <option value="Bristol City">Bristol City</option>
+                        <option value="Bristol Rvs">Bristol Rvs</option>
+                        <option value="Bristol">Bristol</option>
+                        <option value="Bristol City">Bristol City</option>
+                        <option value="Burnley">Burnley</option>
+                        <option value="Bury">Bury</option>
+                        <option value="Cadiz">Cadiz</option>
+                        <option value="Cagliari">Cagliari</option>
+                        <option value="Cambridge">Cambridge</option>
+                        <option value="Canvey Island">Canvey Island</option>
+                        <option value="Cardiff">Cardiff</option>
+                        <option value="Carlisle">Carlisle</option>
+                        <option value="Carpi">Carpi</option>
+                        <option value="Catania">Catania</option>
+                        <option value="Celtic">Celtic</option>
+                        <option value="Cesena">Cesena</option>
+                        <option value="Chambly">Chambly</option>
+                        <option value="Charlton">Charlton</option>
+                        <option value="Chester">Chester</option>
+                        <option value="Chesterfield">Chesterfield</option>
+                        <option value="Club Brugge">Club Brugge</option>
+                        <option value="Clydebank">Clydebank</option>
+                        <option value="Clyde">Clyde</option>
+                        <option value="Colchester">Colchester</option>
+                        <option value="Cowdenbeath">Cowdenbeath</option>
+                        <option value="Crawley Town">Crawley Town</option>
+                        <option value="Cosenza">Cosenza</option>
+                        <option value="Cottbus">Cottbus</option>
+                        <option value="Coventry">Coventry</option>
+                        <option value="Crewe">Crewe</option>
+                        <option value="Dagenham & Redbridge">Dagenham & Redbridge</option>
+                        <option value="Darlington">Darlington</option>
+                        <option value="Darmstadt">Darmstadt</option>
+                        <option value="Deportivo La Coruna">Deportivo La Coruna</option>
+                        <option value="Dijon">Dijon</option>
+                        <option value="Doncaster">Doncaster</option>
+                        <option value="Dortmund">Dortmund</option>
+                        <option value="Dover Athletic">Dover Athletic</option>
+                        <option value="Dresden">Dresden</option>
+                        <option value="Dumbarton">Dumbarton</option>
+                        <option value="Dundee">Dundee</option>
+                        <option value="Dundee United">Dundee United</option>
+                        <option value="Elche">Elche</option>
+                        <option value="Empoli">Empoli</option>
+                        <option value="Espanyol">Espanyol</option>
+                        <option value="Excelsior">Excelsior</option>
+                        <option value="FC Emmen">FC Emmen</option>
+                        <option value="FC Koln">FC Koln</option>
+                        <option value="Falkirk">Falkirk</option>
+                        <option value="Feirense">Feirense</option>
+                        <option value="Fiorentina">Fiorentina</option>
+                        <option value="Freiburg">Freiburg</option>
+                        <option value="Fulham">Fulham</option>
+                        <option value="Gateshead">Gateshead</option>
+                        <option value="Gent">Gent</option>
+                        <option value="Getafe">Getafe</option>
+                        <option value="Genoa">Genoa</option>
+                        <option value="Gil Vicente">Gil Vicente</option>
+                        <option value="Girona">Girona</option>
+                        <option value="Greuther Furth">Greuther Furth</option>
+                        <option value="Grimsby">Grimsby</option>
+                        <option value="Guimaraes">Guimaraes</option>
+                        <option value="Hamburg">Hamburg</option>
+                        <option value="Hartlepool">Hartlepool</option>
+                        <option value="Hannover">Hannover</option>
+                        <option value="Hayes & Yeading">Hayes & Yeading</option>
+                        <option value="Heidenheim">Heidenheim</option>
+                        <option value="Hearts">Hearts</option>
+                        <option value="Helsingborg">Helsingborg</option>
+                        <option value="Hertha">Hertha</option>
+                        <option value="Hoffenheim">Hoffenheim</option>
+                        <option value="Hull">Hull</option>
+                        <option value="Hyde United">Hyde United</option>
+                        <option value="Ipswich">Ipswich</option>
+                        <option value="Inter">Inter</option>
+                        <option value="Juventus">Juventus</option>
+                        <option value="Kidderminster">Kidderminster</option>
+                        <option value="Kilmarnock">Kilmarnock</option>
+                        <option value="Le Havre">Le Havre</option>
+                        <option value="Leicester">Leicester</option>
+                        <option value="Leganes">Leganes</option>
+                        <option value="Lecce">Lecce</option>
+                        <option value="Leeds">Leeds</option>
+                        <option value="Levante">Levante</option>
+                        <option value="Leyton Orient">Leyton Orient</option>
+                        <option value="Lincoln">Lincoln</option>
+                        <option value="Livingston">Livingston</option>
+                        <option value="Lorient">Lorient</option>
+                        <option value="Lyon">Lyon</option>
+                        <option value="Macclesfield">Macclesfield</option>
+                        <option value="Malaga">Malaga</option>
+                        <option value="Manchester City">Manchester City</option>
+                        <option value="Man United">Man United</option>
+                        <option value="Mansfield">Mansfield</option>
+                        <option value="Maritimo">Maritimo</option>
+                        <option value="Marseille">Marseille</option>
+                        <option value="Milan">Milan</option>
+                        <option value="Milton Keynes Dons">Milton Keynes Dons</option>
+                        <option value="Morecambe">Morecambe</option>
+                        <option value="Motherwell">Motherwell</option>
+                        <option value="Napoli">Napoli</option>
+                        <option value="Nantes">Nantes</option>
+                        <option value="Newcastle">Newcastle</option>
+                        <option value="Nimes">Nimes</option>
+                        <option value="Norwich">Norwich</option>
+                        <option value="Notts County">Notts County</option>
+                        <option value="Oxford">Oxford</option>
+                        <option value="Osasuna">Osasuna</option>
+                        <option value="Osnabruck">Osnabruck</option>
+                        <option value="Partick">Partick</option>
+                        <option value="Paris SG">Paris SG</option>
+                        <option value="Pescara">Pescara</option>
+                        <option value="Peterhead">Peterhead</option>
+                        <option value="Plymouth">Plymouth</option>
+                        <option value="Port Vale">Port Vale</option>
+                        <option value="Portsmouth">Portsmouth</option>
+                        <option value="Preston">Preston</option>
+                        <option value="Pro Vercelli">Pro Vercelli</option>
+                        <option value="QPR">QPR</option>
+                        <option value="Queens Park">Queens Park</option>
+                        <option value="Reading">Reading</option>
+                        <option value="Real Madrid">Real Madrid</option>
+                        <option value="Reggiana">Reggiana</option>
+                        <option value="Reims">Reims</option>
+                        <option value="Regensburg">Regensburg</option>
+                        <option value="Rennes">Rennes</option>
+                        <option value="Roma">Roma</option>
+                        <option value="Rushden & D">Rushden & D</option>
+                        <option value="Sampdoria">Sampdoria</option>
+                        <option value="Salisbury">Salisbury</option>
+                        <option value="Salford">Salford</option>
+                        <option value="Salernitana">Salernitana</option>
+                        <option value="Scunthorpe">Scunthorpe</option>
+                        <option value="Sevilla">Sevilla</option>
+                        <option value="Sevilla B">Sevilla B</option>
+                        <option value="Sheffield United">Sheffield United</option>
+                        <option value="Sheffield Weds">Sheffield Weds</option>
+                        <option value="Shrewsbury">Shrewsbury</option>
+                        <option value="Sivasspor">Sivasspor</option>
+                        <option value="Southend">Southend</option>
+                        <option value="Southport">Southport</option>
+                        <option value="Spezia">Spezia</option>
+                        <option value="Sporting CP">Sporting CP</option>
+                        <option value="St Etienne">St Etienne</option>
+                        <option value="St Johnstone">St Johnstone</option>
+                        <option value="St Mirren">St Mirren</option>
+                        <option value="St Pauli">St Pauli</option>
+                        <option value="Stockport">Stockport</option>
+                        <option value="Strasbourg">Strasbourg</option>
+                        <option value="Sunderland">Sunderland</option>
+                        <option value="Swansea">Swansea</option>
+                        <option value="Swindon">Swindon</option>
+                        <option value="Tottenham">Tottenham</option>
+                        <option value="Tranmere">Tranmere</option>
+                        <option value="Troyes">Troyes</option>
+                        <option value="Turin">Turin</option>
+                        <option value="Twente">Twente</option>
+                        <option value="Valencia">Valencia</option>
+                        <option value="Valladolid">Valladolid</option>
+                        <option value="Vancouver Whitecaps">Vancouver Whitecaps</option>
+                        <option value="Venezia">Venezia</option>
+                        <option value="Villarreal">Villarreal</option>
+                        <option value="Vitesse">Vitesse</option>
+                        <option value="Walsall">Walsall</option>
+                        <option value="Watford">Watford</option>
+                        <option value="Wellington Phoenix">Wellington Phoenix</option>
+                        <option value="Welling United">Welling United</option>
+                        <option value="West Brom">West Brom</option>
+                        <option value="West Ham">West Ham</option>
+                        <option value="Wigan">Wigan</option>
+                        <option value="Wolves">Wolves</option>
+                        <option value="Wycombe">Wycombe</option>
+                        <option value="Yeovil">Yeovil</option>
+                        <option value="York">York</option>
+
+                    </select>
+
+                    <input type="number" name="FTHG" placeholder="Full Time Home Goals" required>
+                    <input type="number" name="HTHG" placeholder="Half Time Home Goals" required>
+                    <input type="number" name="HS" placeholder="Home Shots" required>
+                    <input type="number" name="HST" placeholder="Home Shots on Target" required>
+                    <input type="number" name="HC" placeholder="Home Corners" required>
+                    <input type="number" name="HF" placeholder="Home Fouls" required>
+                    <input type="number" name="HY" placeholder="Home Yellow Cards" required>
+                    <input type="number" name="HR" placeholder="Home Red Cards" required>
+                </div>
+
+                <div class="column">
+                    <label for="AwayTeam">Away Team:</label>
+
+                    <select name="AwayTeam" id="AwayTeam" required>
+                        <option value="Aberdeen">Aberdeen</option>
+                        <option value="Accrington">Accrington</option>
+                        <option value="AFC Telford United">AFC Telford United</option>
+                        <option value="AFC Wimbledon">AFC Wimbledon</option>
+                        <option value="Alaves">Alaves</option>
+                        <option value="Alanyaspor">Alanyaspor</option>
+                        <option value="Alcorcon">Alcorcon</option>
+                        <option value="Alfreton Town">Alfreton Town</option>
+                        <option value="Amiens">Amiens</option>
+                        <option value="Anderlecht">Anderlecht</option>
+                        <option value="Angers">Angers</option>
+                        <option value="Antalyaspor">Antalyaspor</option>
+                        <option value="Arsenal">Arsenal</option>
+                        <option value="Aston Villa">Aston Villa</option>
+                        <option value="Atletico Madrid">Atletico Madrid</option>
+                        <option value="Augsburg">Augsburg</option>
+                        <option value="Auxerre">Auxerre</option>
+                        <option value="Barnet">Barnet</option>
+                        <option value="Barnsley">Barnsley</option>
+                        <option value="Bari">Bari</option>
+                        <option value="Barcelona">Barcelona</option>
+                        <option value="Barcelona B">Barcelona B</option>
+                        <option value="Barnsley">Barnsley</option>
+                        <option value="Basel">Basel</option>
+                        <option value="Beerschot VA">Beerschot VA</option>
+                        <option value="Benfica">Benfica</option>
+                        <option value="Bielefeld">Bielefeld</option>
+                        <option value="Bielefeld">Bielefeld</option>
+                        <option value="Birmingham">Birmingham</option>
+                        <option value="Blackburn">Blackburn</option>
+                        <option value="Bolognese">Bolognese</option>
+                        <option value="Bolton">Bolton</option>
+                        <option value="Boavista">Boavista</option>
+                        <option value="Bordeaux">Bordeaux</option>
+                        <option value="Boreham Wood">Boreham Wood</option>
+                        <option value="Bologna">Bologna</option>
+                        <option value="Bradford">Bradford</option>
+                        <option value="Brentford">Brentford</option>
+                        <option value="Brest">Brest</option>
+                        <option value="Brighton">Brighton</option>
+                        <option value="Bristol City">Bristol City</option>
+                        <option value="Bristol Rvs">Bristol Rvs</option>
+                        <option value="Bursaspor">Bursaspor</option>
+                        <option value="Burnley">Burnley</option>
+                        <option value="Cagliari">Cagliari</option>
+                        <option value="Cadiz">Cadiz</option>
+                        <option value="Cambridge">Cambridge</option>
+                        <option value="Cartagena">Cartagena</option>
+                        <option value="Catania">Catania</option>
+                        <option value="Celtic">Celtic</option>
+                        <option value="Cesena">Cesena</option>
+                        <option value="Charleroi">Charleroi</option>
+                        <option value="Cheltenham">Cheltenham</option>
+                        <option value="Chester">Chester</option>
+                        <option value="Chesterfield">Chesterfield</option>
+                        <option value="Chievo">Chievo</option>
+                        <option value="Club Brugge">Club Brugge</option>
+                        <option value="Colchester">Colchester</option>
+                        <option value="Coventry">Coventry</option>
+                        <option value="Crotone">Crotone</option>
+                        <option value="Crystal Palace">Crystal Palace</option>
+                        <option value="Cuscus">Cuscus</option>
+                        <option value="Darlington">Darlington</option>
+                        <option value="Dartford">Dartford</option>
+                        <option value="Dijon">Dijon</option>
+                        <option value="Doncaster">Doncaster</option>
+                        <option value="Dundee">Dundee</option>
+                        <option value="Dundee United">Dundee United</option>
+                        <option value="East Fife">East Fife</option>
+                        <option value="East Stirling">East Stirling</option>
+                        <option value="Eastleigh">Eastleigh</option>
+                        <option value="Elche">Elche</option>
+                        <option value="Empoli">Empoli</option>
+                        <option value="Everton">Everton</option>
+                        <option value="Famalicao">Famalicao</option>
+                        <option value="Fenerbahce">Fenerbahce</option>
+                        <option value="Fiorentina">Fiorentina</option>
+                        <option value="Fleetwood Town">Fleetwood Town</option>
+                        <option value="Freiburg">Freiburg</option>
+                        <option value="Fulham">Fulham</option>
+                        <option value="Genoa">Genoa</option>
+                        <option value="Getafe">Getafe</option>
+                        <option value="Gillingham">Gillingham</option>
+                        <option value="Gimnastic">Gimnastic</option>
+                        <option value="Granada">Granada</option>
+                        <option value="Grays">Grays</option>
+                        <option value="Greuther Furth">Greuther Furth</option>
+                        <option value="Guingamp">Guingamp</option>
+                        <option value="Hansa Rostock">Hansa Rostock</option>
+                        <option value="Hannover">Hannover</option>
+                        <option value="Hartlepool">Hartlepool</option>
+                        <option value="Heerenveen">Heerenveen</option>
+                        <option value="Hertha">Hertha</option>
+                        <option value="Hibernian">Hibernian</option>
+                        <option value="Hoffenheim">Hoffenheim</option>
+                        <option value="Huddersfield">Huddersfield</option>
+                        <option value="Hull">Hull</option>
+                        <option value="Inverness C">Inverness C</option>
+                        <option value="Juventus">Juventus</option>
+                        <option value="Kidderminster">Kidderminster</option>
+                        <option value="Kilmarnock">Kilmarnock</option>
+                        <option value="Kortrijk">Kortrijk</option>
+                        <option value="Lazio">Lazio</option>
+                        <option value="Levante">Levante</option>
+                        <option value="Lens">Lens</option>
+                        <option value="Leyton Orient">Leyton Orient</option>
+                        <option value="Lille">Lille</option>
+                        <option value="Lincoln">Lincoln</option>
+                        <option value="Liverpool">Liverpool</option>
+                        <option value="Lyon">Lyon</option>
+                        <option value="Malaga">Malaga</option>
+                        <option value="Man City">Man City</option>
+                        <option value="Man United">Man United</option>
+                        <option value="Mallorca">Mallorca</option>
+                        <option value="Marseille">Marseille</option>
+                        <option value="Milan">Milan</option>
+                        <option value="Milton Keynes Dons">Milton Keynes Dons</option>
+                        <option value="Montpellier">Montpellier</option>
+                        <option value="Morecambe">Morecambe</option>
+                        <option value="Nantes">Nantes</option>
+                        <option value="Napoli">Napoli</option>
+                        <option value="Nimes">Nimes</option>
+                        <option value="Norwich">Norwich</option>
+                        <option value="Numancia">Numancia</option>
+                        <option value="Nurnberg">Nurnberg</option>
+                        <option value="Olympiakos">Olympiakos</option>
+                        <option value="Osasuna">Osasuna</option>
+                        <option value="Osnabruck">Osnabruck</option>
+                        <option value="Oxford">Oxford</option>
+                        <option value="Paris FC">Paris FC</option>
+                        <option value="Paris SG">Paris SG</option>
+                        <option value="Pescara">Pescara</option>
+                        <option value="Peterborough">Peterborough</option>
+                        <option value="Plymouth">Plymouth</option>
+                        <option value="Porto">Porto</option>
+                        <option value="Pro Vercelli">Pro Vercelli</option>
+                        <option value="Preston">Preston</option>
+                        <option value="Queen of Sth">Queen of Sth</option>
+                        <option value="QPR">QPR</option>
+                        <option value="Real Madrid">Real Madrid</option>
+                        <option value="Reggiana">Reggiana</option>
+                        <option value="Reims">Reims</option>
+                        <option value="Rennes">Rennes</option>
+                        <option value="Roma">Roma</option>
+                        <option value="Rushden & Diamonds">Rushden & Diamonds</option>
+                        <option value="Salford">Salford</option>
+                        <option value="Sampdoria">Sampdoria</option>
+                        <option value="Sassuolo">Sassuolo</option>
+                        <option value="Schalke 04">Schalke 04</option>
+                        <option value="Scunthorpe">Scunthorpe</option>
+                        <option value="Sevilla">Sevilla</option>
+                        <option value="Sheffield United">Sheffield United</option>
+                        <option value="Sheffield Weds">Sheffield Weds</option>
+                        <option value="Sociedad">Sociedad</option>
+                        <option value="Spezia">Spezia</option>
+                        <option value="Southampton">Southampton</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Stoke">Stoke</option>
+                        <option value="St Johnstone">St Johnstone</option>
+                        <option value="Stuttgart">Stuttgart</option>
+                        <option value="Sunderland">Sunderland</option>
+                        <option value="Swansea">Swansea</option>
+                        <option value="Torino">Torino</option>
+                        <option value="Toulouse">Toulouse</option>
+                        <option value="Trabzonspor">Trabzonspor</option>
+                        <option value="Twente">Twente</option>
+                        <option value="Udinese">Udinese</option>
+                        <option value="Union Berlin">Union Berlin</option>
+                        <option value="Valencia">Valencia</option>
+                        <option value="Vallecano">Vallecano</option>
+                        <option value="Venezia">Venezia</option>
+                        <option value="Villarreal">Villarreal</option>
+                        <option value="Walsall">Walsall</option>
+                        <option value="Watford">Watford</option>
+                        <option value="Welling United">Welling United</option>
+                        <option value="West Brom">West Brom</option>
+                        <option value="West Ham">West Ham</option>
+                        <option value="Wigan">Wigan</option>
+                        <option value="Wolves">Wolves</option>
+                        <option value="Wycombe">Wycombe</option>
+                        <option value="York">York</option>
+
+                    </select>
+
+                    <input type="number" name="FTAG" placeholder="Full Time Away Goals" required>
+                    <input type="number" name="HTAG" placeholder="Half Time Away Goals" required>
+                    <input type="number" name="AS" placeholder="Away Shots" required>
+                    <input type="number" name="AST" placeholder="Away Shots on Target" required>
+                    <input type="number" name="AC" placeholder="Away Corners" required>
+                    <input type="number" name="AF" placeholder="Away Fouls" required>
+                    <input type="number" name="AY" placeholder="Away Yellow Cards" required>
+                    <input type="number" name="AR" placeholder="Away Red Cards" required>
+                </div>
+            </div>
+
+            <button type="submit">Predict Match</button>
+        </form>
+
+        {% if result %}
+        <h2>Predicted Result: {{ result }}</h2>
+        <p><strong>Input Data:</strong></p>
+        <pre>{{ user_input }}</pre>
+        {% endif %}
+        
+    </div>
+    
+    <br><br>
+</body>
+</html>
