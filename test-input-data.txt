@@ -1,0 +1,33 @@
+############ sample input
+user_input = {
+    "Div": "SP2",
+    "Country": "Spain",
+    "League": "La Liga Segunda Division",
+    "HomeTeam": "Sp Gijon",
+    "AwayTeam": "Almeria",
+    "FTHG": 0,
+    "FTAG": 2,
+    "HTHG": 0,
+    "HTAG": 0,
+    "HS": 15.0,
+    "AS": 10.0,
+    "HST": 3.0,
+    "AST": 3.0,
+    "HC": 7.0,
+    "AC": 3.0,
+    "HF": 12.0,
+    "AF": 8.0,
+    "HY": 0.0,
+    "AY": 0.0,
+    "HR": 0.0,
+    "AR": 0.0,
+    "Season_Start": 2020,
+    "Season_End": 2021,
+    "Year": 2021,
+    "Month": 5,
+    "Day": 30
+}
+
+
+
+############ sample output
